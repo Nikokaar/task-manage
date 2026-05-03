@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
 
   backend:
     build: ./backend
@@ -20,7 +20,7 @@ services:
       NODE_ENV: production
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/taskmanagement
       JWT_SECRET: your-super-secret-jwt-key-change-in-production
-      FRONTEND_URL: http://localhost
+      FRONTEND_URL: http://localhost:5173
     ports:
       - "5000:5000"
     depends_on:

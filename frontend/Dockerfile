@@ -6,10 +6,12 @@ WORKDIR /app
 COPY package*.json ./
 COPY vite.config.ts ./
 COPY tsconfig.json ./
+COPY tsconfig.node.json ./
 COPY src ./src
 COPY index.html ./
 
-RUN npm install
+RUN npm install --legacy-peer-deps
+
 RUN npm run build
 
 # Stage 2: Serve static files
